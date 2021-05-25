@@ -1,35 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
        <tittle></tittle>
        <link rel="stylesheet" href="./css/registration_number.css">
  
     </head>
-
+<style>
+   
+</style>
    <body>
 
         <div class="container" > 
              <div class="registration"> 
+                  
 
                    <label>Registration Number</label> <input type="text" name= "" value="" placeholder="Enter Registration Number" class="regNum">
                    
                    <button class="button-primary add">Add</button>
-                   <label class="recentReg"></label>
+                  
              </div>
+                <!-- empty div for appendChild --> 
+  
+             <div>
+               <ul id="list" ></ul>
+          </div>
 
               <div class="town">
-                   <input type="radio" name="location" id="bell" value="bellivelle"> <label>Bellivelle</label>
+                   <input type="radio" name="location" id="bell" value="bellville"> <label>Bellville</label>
                    <input type="radio" name="location"  id="cape" value="capeTown"> <label>Cape Town</label>
                    <input type="radio" name="location"  id="paar" value="paarl"> <label>Paarl</label><br>
                    <button class="button-primary show">Show</button><br>
+                   <ul id="showSelected"></ul><br>
                    <button class="button-primary show-all">Show All</button>
-                   <button class="button-primary reset">Reset</button>
+                   <button class="button-primary reset">Reset</button><br>
+                   <ul id="countReg"></ul>
                    
              </div>
          </div> 
     </body>
 
-<script src="./functions/AddRegistrations.js"></script>
-<script src="./js/registrationNoPlate.js"></script>
+<script src="./functions/addRegistrations.js" charset="UTF-8"></script>
+
+<script src="./js/registrationNoPlate.js" charset="UTF-8"></script>
    
 </html>
