@@ -86,15 +86,12 @@ function addReg(){
 
        else if(checkedRadioBtn.value === "paarl") {
         for(var i =0; i<=arrReg.length;i++) {
-          if(arrReg[i].startsWith('CJ')){
+          
             let paarlReg = document.createElement("li")
                 var paar= document.createTextNode(arrReg[i])
                  paarlReg.appendChild(paar)
                  unorderd.appendChild(paarlReg)  
                  checkedRadioBtn.checked = false;
-          }
-          // console.log(arrReg) ;
-          //showRegForSelected.innerHTML = arrReg;
         }
    }
 
