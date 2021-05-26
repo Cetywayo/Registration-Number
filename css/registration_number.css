@@ -18,6 +18,10 @@ input.regNum {
     height: 30px;
 }
 
+.last-section {
+    margin-top: 38px;
+}
+
 
 button.button-primary{
     width: 10%;
@@ -26,11 +30,15 @@ button.button-primary{
 
 button.button-primary.show {
     margin-top: 30px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
+}
+
+.last-section {
+    margin-top: 53px;
 }
 
 ul#list {
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 

@@ -1,7 +1,7 @@
 function addRegistrations(existingReg){
 
     var arrReg =  existingReg || [];
-    var letters =  /[A-Z]+\s\d+/gi
+    var letters =  /^[A-Z]+\s\d+/gi
 
 
 
