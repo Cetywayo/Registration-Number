@@ -28,6 +28,7 @@ function addReg(){
   regInstance.addRegOnArr(regElem.value)
    var regies =  regInstance.getRegistrations()
    if(regInstance.enterRegistrationsNo(regElem.value)){
+     if (regInstance.addRegOnArr(regElem.value)) {}
     let element = document.createElement("li")
     var reglist = document.createTextNode(regInstance.enterRegistrationsNo(regElem.value))
     element.appendChild(reglist)
@@ -37,8 +38,14 @@ function addReg(){
   localStorage.setItem("reg", JSON.stringify(regInstance.getRegistrations()));
    
 
-  regElem.value = '';
+ 
 
+  }
+  else if(regInstance.enterRegistrationsNo(regElem.value).includes){
+    displayError.innerHTML= "registration is already existing"
+    setTimeout(function(){
+      displayError.innerHTML =displayError.textContent ='' ;
+    }, 1900)
   }
   
   else {
@@ -47,20 +54,29 @@ function addReg(){
       displayError.innerHTML =displayError.textContent ='' ;
     }, 1900)
 }
-
+regElem.value = '';
 
    
 }
 
    function showSelectedRegTown(){
-   
+    var checkedRadioBtn = document.querySelector("input[name='location']:checked");
+    var showArr = regInstance.selectTown(checkedRadioBtn.value);
     while(unorderd.firstChild){
       unorderd.removeChild(unorderd.firstChild)
     }
 
-    var checkedRadioBtn = document.querySelector("input[name='location']:checked");
-    regInstance.selectTown(checkedRadioBtn.value)
-    var showArr = regInstance.selectTown(checkedRadioBtn.value);
+    if(showArr.length == 0)  {
+      displayError.innerHTML= "No registrations"
+     
+      setTimeout(function(){
+        displayError.innerHTML =displayError.textContent ='' ;
+      }, 2000)
+    }
+    else{
+
+
+    
     console.log(showArr)
     for (var i=0; i<showArr.length;i++){
     let displaySelectedArr = document.createElement("li")
@@ -68,7 +84,8 @@ function addReg(){
     displaySelectedArr.appendChild(displayArr)
     unorderd.append(displaySelectedArr)
     }
-
+  }
+  
     
   
     console.log(regInstance.selectTown(checkedRadioBtn.value))
@@ -78,14 +95,21 @@ function addReg(){
 
  }
 
+ window.onload = () => {
+   
+  for (var i=0; i<storeRegistrationNimbers.length;i++){
+
+    let displaySelectedArr = document.createElement("li")
+    var displayArr =document.createTextNode(storeRegistrationNimbers[i]) 
+    displaySelectedArr.appendChild(displayArr)
+    unorderd.append(displaySelectedArr)
+    }
+
+};
+
  function resetStorage(){
-  node.removeChild(child);
-  // var all = regInstance.showAll();
-  // all.clear()
-  //localStorage.clear()
-  //regInstance.getRegistrations().clear()
-  //countRegistrationElement.clear()
- // Location.reload()
+  localStorage.clear()
+  location.reload()
 
 }
    addButtonElement.addEventListener('click', addReg)

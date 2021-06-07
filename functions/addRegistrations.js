@@ -1,29 +1,43 @@
 function addRegistrations(existingReg){
 
     var arrReg =  existingReg || [];
-    var letters =  /^[A-Z]+\s\d+/gi
+    var letters =   /^[A-Z]{2}\s\d{3}\-\d{3}$/    // CA 123 123 CF 123123 CK 123-123
+    var letters1 =    /^[A-Z]{2}\s\d{6}$/ 
+    var letters2 =   /^[A-Z]{2}\s\d{3}\s\d{3}$/    //^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$
     var newArr = []
+    var duplicate = "registration is already existing";
 
 
 
     function enterRegistrationsNo(regNo){
         var numberPlate = regNo.trim()
-         if (numberPlate.match(letters)){
+         if (numberPlate.match(letters) || numberPlate.match(letters1) || numberPlate.match(letters2)  ){
+            
         return numberPlate;
-        }     
+        }  
+        
+        
   
     }
 
     function addRegOnArr(regArr){
 
         var regNum01 = regArr;
-        if(enterRegistrationsNo(regArr)){
+        
             if(!arrReg.includes(regNum01)){
                 arrReg.push(regNum01);
+                
+            // } else {
+            //     duplicate = "registration is already existing"
+                
             }
         }
      
      
+    
+
+    function getDuplicate() {
+        return duplicate;
     }
 
     function getRegistrations(){
@@ -85,6 +99,7 @@ function addRegistrations(existingReg){
         enterRegistrationsNo,
         addRegOnArr,
         getRegistrations,
-        selectTown
+        selectTown,
+        getDuplicate
      } 
 }
