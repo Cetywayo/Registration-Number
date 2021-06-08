@@ -96,6 +96,9 @@ regElem.value = '';
  }
 
  window.onload = () => {
+  if(localStorage['reg']){
+    var storeRegistrationNimbers = JSON.parse(localStorage.getItem('reg'));
+
    
   for (var i=0; i<storeRegistrationNimbers.length;i++){
 
@@ -104,7 +107,7 @@ regElem.value = '';
     displaySelectedArr.appendChild(displayArr)
     unorderd.append(displaySelectedArr)
     }
-
+  }
 }
 
  function resetStorage(){
