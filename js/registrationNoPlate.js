@@ -6,115 +6,97 @@ var showElementButton = document.querySelector('.show')
 var unorderd = document.getElementById('list');
 var displayError = document.querySelector('.erroMsg')
 
+var storeRegistrationNimbers = []
 
-if(localStorage['reg']){
-    var storeRegistrationNimbers = JSON.parse(localStorage.getItem('reg'));
+if (localStorage['reg']) {
+  storeRegistrationNimbers = JSON.parse(localStorage.getItem('reg'));
 }
 
 var regInstance = addRegistrations(storeRegistrationNimbers);
-//let counter =regInstance.addRegOnArr()
+function addReg() {
 
-// function appendReg() {
+  var newReg = regInstance.enterRegistrationsNo(regElem.value)
 
-// }
-
-
-    
-function addReg(){
+  if (!storeRegistrationNimbers.includes(newReg)) {
 
 
+    if (newReg) {
+      regInstance.addRegOnArr(newReg)
 
-  //if(regElem.value)
-  regInstance.addRegOnArr(regElem.value)
-   var regies =  regInstance.getRegistrations()
-   if(regInstance.enterRegistrationsNo(regElem.value)){
-    //  if (regInstance.addRegOnArr(regElem.value)) {}
-    let element = document.createElement("li")
-    var reglist = document.createTextNode(regInstance.enterRegistrationsNo(regElem.value))
-    element.appendChild(reglist)
-    unorderd.append(element)
-    
-      
-  localStorage.setItem("reg", JSON.stringify(regInstance.getRegistrations()));
-   
-
- 
+      let element = document.createElement("li")
+      var reglist = document.createTextNode(newReg)
+      element.appendChild(reglist)
+      unorderd.append(element)
+    }
+    displayError.innerHTML = "Please enter registration"
 
   }
-  // else if(regInstance.enterRegistrationsNo(regElem.value).includes){
-  //   displayError.innerHTML= "registration is already existing"
-  //   setTimeout(function(){
-  //     displayError.innerHTML =displayError.textContent ='' ;
-  //   }, 1900)
-  // }
-  
-  else {
-    displayError.innerHTML= "invalid registration"
-    setTimeout(function(){
-      displayError.innerHTML =displayError.textContent ='' ;
+  else if (newReg === regInstance.enterRegistrationsNo(regElem.value)) {
+    displayError.innerHTML = "registration is already existing"
+    setTimeout(function () {
+      displayError.innerHTML = displayError.textContent = '';
     }, 1900)
+  }
+
+  else {
+    displayError.innerHTML = "invalid registration"
+    setTimeout(function () {
+      displayError.innerHTML = displayError.textContent = '';
+    }, 1900)
+  }
+
+  localStorage.setItem("reg", JSON.stringify(regInstance.getRegistrations()));
+  regElem.value = '';
 }
-regElem.value = '';
 
-   
-}
+function showSelectedRegTown() {
+  var checkedRadioBtn = document.querySelector("input[name='location']:checked");
+  var showArr = regInstance.selectTown(checkedRadioBtn.value);
+  while (unorderd.firstChild) {
+    unorderd.removeChild(unorderd.firstChild)
+  }
 
-   function showSelectedRegTown(){
-    var checkedRadioBtn = document.querySelector("input[name='location']:checked");
-    var showArr = regInstance.selectTown(checkedRadioBtn.value);
-    while(unorderd.firstChild){
-      unorderd.removeChild(unorderd.firstChild)
-    }
+  if (showArr.length == 0) {
+    displayError.innerHTML = "No registrations"
 
-    if(showArr.length == 0)  {
-      displayError.innerHTML= "No registrations"
-     
-      setTimeout(function(){
-        displayError.innerHTML =displayError.textContent ='' ;
-      }, 2000)
-    }
-    else{
-
-
-    
-    console.log(showArr)
-    for (var i=0; i<showArr.length;i++){
-    let displaySelectedArr = document.createElement("li")
-    var displayArr =document.createTextNode(showArr[i]) 
-    displaySelectedArr.appendChild(displayArr)
-    unorderd.append(displaySelectedArr)
+    setTimeout(function () {
+      displayError.innerHTML = displayError.textContent = '';
+    }, 2000)
+  }
+  else {
+    //console.log(showArr)
+    for (var i = 0; i < showArr.length; i++) {
+      let displaySelectedArr = document.createElement("li")
+      var displayArr = document.createTextNode(showArr[i])
+      displaySelectedArr.appendChild(displayArr)
+      unorderd.append(displaySelectedArr)
     }
   }
-  
-    
-  
-    console.log(regInstance.selectTown(checkedRadioBtn.value))
+  console.log(regInstance.selectTown(checkedRadioBtn.value))
+  checkedRadioBtn.checked = false;
 
-   
-    checkedRadioBtn.checked = false;
+}
 
- }
-
- window.onload = () => {
-  if(localStorage['reg']){
+window.onload = () => {
+  if (localStorage['reg']) {
     var storeRegistrationNimbers = JSON.parse(localStorage.getItem('reg'));
 
-   
-  for (var i=0; i<storeRegistrationNimbers.length;i++){
 
-    let displaySelectedArr = document.createElement("li")
-    var displayArr =document.createTextNode(storeRegistrationNimbers[i]) 
-    displaySelectedArr.appendChild(displayArr)
-    unorderd.append(displaySelectedArr)
+    for (var i = 0; i < storeRegistrationNimbers.length; i++) {
+
+      let displaySelectedArr = document.createElement("li")
+      var displayArr = document.createTextNode(storeRegistrationNimbers[i])
+      displaySelectedArr.appendChild(displayArr)
+      unorderd.append(displaySelectedArr)
     }
   }
 }
 
- function resetStorage(){
+function resetStorage() {
   localStorage.clear()
   location.reload()
 
 }
-   addButtonElement.addEventListener('click', addReg)
-   resetButtonElem.addEventListener('click',resetStorage )
-   showElementButton.addEventListener('click',showSelectedRegTown )
+addButtonElement.addEventListener('click', addReg)
+resetButtonElem.addEventListener('click', resetStorage)
+showElementButton.addEventListener('click', showSelectedRegTown)

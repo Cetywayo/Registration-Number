@@ -14,9 +14,7 @@ function addRegistrations(existingReg){
          if (numberPlate.match(letters) || numberPlate.match(letters1) || numberPlate.match(letters2)  ){
             
         return numberPlate;
-        }  
-        
-        
+        }     
   
     }
 
@@ -27,12 +25,10 @@ function addRegistrations(existingReg){
          if (numberPlate) {
              
              if (!arrReg.includes(numberPlate) && numberPlate.trim().match(letters) || numberPlate.match(letters1) || numberPlate.match(letters2)) {
- 
+ console.log('fdfdfdfdfdfdfdfdfdfdfdffd')
                 arrReg.push(numberPlate);  
  
-             }
- 
-             
+             }    
          }
      }
      
@@ -41,6 +37,7 @@ function addRegistrations(existingReg){
     }
 
     function getRegistrations(){
+        console.log(arrReg + "dsdsdsdsds    ")
         return arrReg
     }
 
