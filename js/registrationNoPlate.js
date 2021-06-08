@@ -28,7 +28,13 @@ function addReg() {
       element.appendChild(reglist)
       unorderd.append(element)
     }
-    displayError.innerHTML = "Please enter registration"
+    else{
+      displayError.innerHTML = "Please enter vallid registration"
+     setTimeout(function () {
+      displayError.innerHTML = displayError.textContent = '';
+    }, 1900)
+    }
+    
 
   }
   else if (newReg === regInstance.enterRegistrationsNo(regElem.value)) {

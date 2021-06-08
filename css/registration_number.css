@@ -3,7 +3,9 @@ body{
     background-color: blue;
     color: cornsilk;
 }
-
+.erroMsg {
+    color: red;
+}
 
 .container {
     margin-top: 49px;
