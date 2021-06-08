@@ -28,7 +28,7 @@ function addReg(){
   regInstance.addRegOnArr(regElem.value)
    var regies =  regInstance.getRegistrations()
    if(regInstance.enterRegistrationsNo(regElem.value)){
-     if (regInstance.addRegOnArr(regElem.value)) {}
+    //  if (regInstance.addRegOnArr(regElem.value)) {}
     let element = document.createElement("li")
     var reglist = document.createTextNode(regInstance.enterRegistrationsNo(regElem.value))
     element.appendChild(reglist)
@@ -41,12 +41,12 @@ function addReg(){
  
 
   }
-  else if(regInstance.enterRegistrationsNo(regElem.value).includes){
-    displayError.innerHTML= "registration is already existing"
-    setTimeout(function(){
-      displayError.innerHTML =displayError.textContent ='' ;
-    }, 1900)
-  }
+  // else if(regInstance.enterRegistrationsNo(regElem.value).includes){
+  //   displayError.innerHTML= "registration is already existing"
+  //   setTimeout(function(){
+  //     displayError.innerHTML =displayError.textContent ='' ;
+  //   }, 1900)
+  // }
   
   else {
     displayError.innerHTML= "invalid registration"
@@ -105,7 +105,7 @@ regElem.value = '';
     unorderd.append(displaySelectedArr)
     }
 
-};
+}
 
  function resetStorage(){
   localStorage.clear()

@@ -7,7 +7,7 @@ function addRegistrations(existingReg){
     var newArr = []
     var duplicate = "registration is already existing";
 
-
+///var numberPlate= ""
 
     function enterRegistrationsNo(regNo){
         var numberPlate = regNo.trim()
@@ -20,22 +20,22 @@ function addRegistrations(existingReg){
   
     }
 
-    function addRegOnArr(regArr){
 
-        var regNum01 = regArr;
-        
-            if(!arrReg.includes(regNum01)){
-                arrReg.push(regNum01);
-                
-            // } else {
-            //     duplicate = "registration is already existing"
-                
-            }
-        }
+    function addRegOnArr(addArrs) {
+       var numberPlate = addArrs
+         
+         if (numberPlate) {
+             
+             if (!arrReg.includes(numberPlate) && numberPlate.trim().match(letters) || numberPlate.match(letters1) || numberPlate.match(letters2)) {
+ 
+                arrReg.push(numberPlate);  
+ 
+             }
+ 
+             
+         }
+     }
      
-     
-    
-
     function getDuplicate() {
         return duplicate;
     }
