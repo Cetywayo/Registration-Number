@@ -63,7 +63,7 @@ function showSelectedRegTown() {
   }
 
   if (showArr.length == 0) {
-    displayError.innerHTML = "No registrations"
+    displayError.innerHTML = "No registration Numbers"
 
     setTimeout(function () {
       displayError.innerHTML = displayError.textContent = '';
