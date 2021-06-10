@@ -11,23 +11,25 @@ function addRegistrations(existingReg){
 
     function enterRegistrationsNo(regNo){
         var numberPlate = regNo.trim()
-        
          if (numberPlate.match(letters) || numberPlate.match(letters1) || numberPlate.match(letters2)  ){
             
-        return numberPlate.toUpperCase();
-        }     
+            return numberPlate.toUpperCase();
+        }  
+        
+        else {
+           return "invalid registration"
+        }
   
     }
 
 
     function addRegOnArr(addArrs) {
        var numberPlate = addArrs
-       
          
          if (numberPlate) {
              
              if (!arrReg.includes(numberPlate) && numberPlate.trim().match(letters) || numberPlate.match(letters1) || numberPlate.match(letters2)) {
- console.log('fdfdfdfdfdfdfdfdfdfdfdffd')
+ 
                 arrReg.push(numberPlate);  
  
              }    
@@ -39,7 +41,6 @@ function addRegistrations(existingReg){
     }
 
     function getRegistrations(){
-        //console.log(arrReg + "dsdsdsdsds    ")
         return arrReg
     }
 
