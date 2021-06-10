@@ -28,13 +28,13 @@ function addReg() {
       element.appendChild(reglist)
       unorderd.append(element)
     }
-    else{
+    else {
       displayError.innerHTML = "Please enter vallid registration"
-     setTimeout(function () {
-      displayError.innerHTML = displayError.textContent = '';
-    }, 1900)
+      setTimeout(function () {
+        displayError.innerHTML = displayError.textContent = '';
+      }, 1900)
     }
-    
+
 
   }
   else if (newReg === regInstance.enterRegistrationsNo(regElem.value)) {
@@ -70,7 +70,7 @@ function showSelectedRegTown() {
     }, 2000)
   }
   else {
-    //console.log(showArr)
+
     for (var i = 0; i < showArr.length; i++) {
       let displaySelectedArr = document.createElement("li")
       var displayArr = document.createTextNode(showArr[i])
