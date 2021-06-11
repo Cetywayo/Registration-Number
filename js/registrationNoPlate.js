@@ -78,7 +78,7 @@ function showSelectedRegTown() {
       unorderd.append(displaySelectedArr)
     }
   }
-  console.log(regInstance.selectTown(checkedRadioBtn.value))
+ 
   checkedRadioBtn.checked = false;
 
 }

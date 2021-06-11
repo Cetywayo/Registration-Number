@@ -24,7 +24,6 @@ function addRegistrations(existingReg) {
         if (numberPlate) {
 
             if (!arrReg.includes(numberPlate) && numberPlate.trim().match(letters) || numberPlate.match(letters1) || numberPlate.match(letters2)) {
-                console.log('fdfdfdfdfdfdfdfdfdfdfdffd')
                 arrReg.push(numberPlate);
 
             }
